@@ -16,13 +16,48 @@
     <div id="gallery" class="gallery"></div>
 
     <div class="controls" style="margin-top:1rem">
-      <button id="add-review" class="btn primary">Agregar reseña</button>
-      <button id="clear-reviews" class="btn danger">Borrar reseñas</button>
+      <div class="library-controls" style="display:flex;gap:0.6rem;align-items:center">
+        <input id="lib-search" type="search" placeholder="Buscar por título..." aria-label="Buscar" class="lib-search">
+        <select id="lib-sort" aria-label="Ordenar" class="lib-sort">
+          <option value="none">Orden: predeterminado</option>
+          <option value="name-asc">Nombre ↑</option>
+          <option value="name-desc">Nombre ↓</option>
+          <option value="rating-desc">Rating ↓</option>
+          <option value="rating-asc">Rating ↑</option>
+        </select>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:0.6rem">
+        <button id="add-review" class="btn primary">Agregar reseña</button>
+        <button id="clear-reviews" class="btn danger">Borrar reseñas</button>
+      </div>
     </div>
 
     <h3 style="margin-top:1.2rem">Reseñas guardadas</h3>
     <ul id="saved-reviews"></ul>
   </div>
+
+  <section class="add-book" style="max-width:900px;margin:1.2rem auto;padding:1rem">
+    <h3>Añadir un libro</h3>
+    <form id="add-book-form">
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
+        <input id="ab-title" placeholder="Título del libro" required style="flex:1;padding:0.45rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06)">
+        <input id="ab-author" placeholder="Autor (opcional)" style="padding:0.45rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06)">
+        <input id="ab-url" placeholder="URL de la imagen (opcional)" style="padding:0.45rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);min-width:200px">
+        <input id="ab-file" type="file" accept="image/*" style="padding:0.25rem">
+        <button class="btn primary" type="submit">Agregar</button>
+      </div>
+      <div style="margin-top:0.6rem;color:var(--muted);font-size:0.9rem">Puedes subir una imagen o pegar la URL. Si subes, se guardará localmente (data URL).</div>
+    </form>
+  </section>
+
+  <section class="user-books" style="max-width:900px;margin:1.2rem auto;padding:1rem">
+    <h3>Libros añadidos</h3>
+    <div style="display:flex;gap:0.6rem;align-items:center;margin-bottom:0.6rem">
+      <div style="flex:1;color:var(--muted)">Aquí ves los libros que has agregado manualmente. Puedes borrarlos si no los quieres.</div>
+      <button id="ub-clear-all" class="btn danger">Borrar todos</button>
+    </div>
+    <ul id="user-books-list" style="list-style:none;padding:0;margin:0"></ul>
+  </section>
 
   
   <div id="review-modal" class="br-modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
